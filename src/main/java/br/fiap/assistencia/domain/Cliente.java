@@ -1,10 +1,18 @@
 package br.fiap.assistencia.domain;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
+
+import javax.naming.Name;
 
 @Entity
 @Table(name = "JAVA_CLIENTE")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Cliente {
     @Id
     @GeneratedValue(
@@ -14,7 +22,10 @@ public class Cliente {
     @Column(name = "NOME",
             nullable = false, length = 120)
     private String nome;
+    @Column(name = "TELEFONE" , length = 20)
     private String telefone;
+    @Column(name = "EMAIL" , length = 120, unique = true)
     private String email;
+    @Column(name = "SENHA", length = 512)
     private String senha;
 }
